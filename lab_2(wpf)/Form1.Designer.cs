@@ -62,10 +62,13 @@ namespace lab_2_wpf_
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.label15 = new System.Windows.Forms.Label();
@@ -374,6 +377,15 @@ namespace lab_2_wpf_
             this.panel10.Size = new System.Drawing.Size(459, 47);
             this.panel10.TabIndex = 12;
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(0, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(173, 17);
+            this.label13.TabIndex = 0;
+            this.label13.Text = "Центральный процессор";
+            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.label14);
@@ -410,16 +422,7 @@ namespace lab_2_wpf_
             this.panel11.Size = new System.Drawing.Size(353, 67);
             this.panel11.TabIndex = 14;
             // 
-            // radioButton1
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(16, 23);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(77, 21);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Ручной";
-            this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // radioButton2
             // 
@@ -432,14 +435,7 @@ namespace lab_2_wpf_
             this.radioButton2.Text = "Автоматический";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
-            // label15
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(13, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(104, 17);
-            this.label15.TabIndex = 2;
-            this.label15.Text = "Режим роботы";
             // 
             // button1
             // 

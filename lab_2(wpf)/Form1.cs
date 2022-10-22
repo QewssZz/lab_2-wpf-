@@ -76,5 +76,10 @@ namespace lab_2_wpf_
         {
 
         }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
