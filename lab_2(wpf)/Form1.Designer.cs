@@ -64,19 +64,19 @@ namespace lab_2_wpf_
             this.panel10 = new System.Windows.Forms.Panel();
             this.label13 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.label15 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -371,37 +371,33 @@ namespace lab_2_wpf_
             // 
             // panel10
             // 
+            this.panel10.Controls.Add(this.label17);
             this.panel10.Controls.Add(this.label13);
             this.panel10.Location = new System.Drawing.Point(12, 113);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(459, 47);
             this.panel10.TabIndex = 12;
+            this.panel10.Paint += new System.Windows.Forms.PaintEventHandler(this.panel10_Paint);
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(0, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(173, 17);
-            this.label13.TabIndex = 0;
-            this.label13.Text = "Центральный процессор";
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.label14);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(477, 113);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(464, 47);
-            this.flowLayoutPanel1.TabIndex = 13;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(0, 0);
+            this.label13.Location = new System.Drawing.Point(-3, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(256, 17);
             this.label13.TabIndex = 0;
             this.label13.Text = "Очередь к центральному процессору";
+            this.label13.Click += new System.EventHandler(this.label13_Click);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.label14);
+            this.flowLayoutPanel1.Controls.Add(this.label18);
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(477, 113);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(464, 47);
+            this.flowLayoutPanel1.TabIndex = 13;
             // 
             // label14
             // 
@@ -414,6 +410,7 @@ namespace lab_2_wpf_
             // 
             // panel11
             // 
+            this.panel11.Controls.Add(this.radioButton3);
             this.panel11.Controls.Add(this.label15);
             this.panel11.Controls.Add(this.radioButton2);
             this.panel11.Controls.Add(this.radioButton1);
@@ -422,7 +419,13 @@ namespace lab_2_wpf_
             this.panel11.Size = new System.Drawing.Size(353, 67);
             this.panel11.TabIndex = 14;
             // 
+            // label15
             // 
+            this.label15.Location = new System.Drawing.Point(0, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(100, 23);
+            this.label15.TabIndex = 0;
+            this.label15.Text = "Режим роботы";
             // 
             // radioButton2
             // 
@@ -435,7 +438,12 @@ namespace lab_2_wpf_
             this.radioButton2.Text = "Автоматический";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
+            // radioButton1
             // 
+            this.radioButton1.Location = new System.Drawing.Point(0, 0);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(104, 24);
+            this.radioButton1.TabIndex = 2;
             // 
             // button1
             // 
@@ -482,6 +490,34 @@ namespace lab_2_wpf_
             this.label16.Size = new System.Drawing.Size(16, 17);
             this.label16.TabIndex = 19;
             this.label16.Text = "0";
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(10, 23);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(77, 21);
+            this.radioButton3.TabIndex = 3;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "Ручной";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(3, 17);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(0, 17);
+            this.label17.TabIndex = 1;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(3, 17);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(0, 17);
+            this.label18.TabIndex = 1;
             // 
             // Form1
             // 
@@ -587,6 +623,9 @@ namespace lab_2_wpf_
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
     }
 }
 
