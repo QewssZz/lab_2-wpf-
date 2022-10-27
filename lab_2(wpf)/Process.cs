@@ -48,7 +48,7 @@ namespace Lab_2_2
             {
                 Status = ProcessStatus.ready;
             }*/
-            FreeingAResource(this, null);
+            OnFreeResource(this, null);
         }
         public void ResetWorkTime()
         {

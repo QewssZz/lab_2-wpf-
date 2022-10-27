@@ -74,6 +74,7 @@ namespace Lab_2_2
                 {
                     proc.BurstTime = processRand.Next(modelSettings.MinValueOfBurstTime,
                         modelSettings.MaxValueOfBurstTime + 1);
+                    Subscribe(proc);
                     readyQueue.Put(proc);
                     if (cpu.IsFree())
                     {
@@ -98,7 +99,52 @@ namespace Lab_2_2
         {
             Process p = sender as Process;
 
-            if (p.Status == ProcessStatus.waiting)//процес покидает внешнее устройство
+            switch (p.Status) 
+            {
+                case ProcessStatus.ready:
+                    device.Clear();
+
+                    p.BurstTime = processRand.Next(modelSettings.MinValueOfBurstTime
+                        , modelSettings.MaxValueOfAddrSpace + 1);
+                    p.ResetWorkTime();
+                    readyQueue = readyQueue.Put(p);
+                    if (cpu.IsFree()) 
+                    {
+                        cpuScheduler.Session();
+                    }
+                    if (deviceQueue.Count != 0) 
+                    {
+                        deviceQueue = deviceScheduler.Session();
+                    }
+                    break;
+                case ProcessStatus.terminated:
+                    cpu.Clear();
+                    memoryManager.Free(p);
+                    Unsubscribe(p);
+                    break;
+                case ProcessStatus.waiting:
+                    cpu.Clear();
+                    p.BurstTime = processRand.Next(modelSettings.MinValueOfBurstTime,
+                        modelSettings.MaxValueOfBurstTime + 1);
+                    p.ResetWorkTime();
+                    deviceQueue = deviceQueue.Put(p);
+                    if (device.IsFree()) 
+                    {
+                        deviceScheduler.Session();
+                    }
+                    if (readyQueue.Count != 0) 
+                    {
+                        cpuScheduler.Session();
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+
+
+            //#1
+            /*if (p.Status == ProcessStatus.waiting)//процес покидает внешнее устройство
             {
                 p.Status = ProcessStatus.ready;
                 device.Clear();
@@ -142,7 +188,7 @@ namespace Lab_2_2
                     Unsubscribe(p);
                 }
                 //readyQueue = cpuScheduler.Session();
-            }
+            }*/
         }
         private void Subscribe(/*Resource resource*/Process p)
         {
