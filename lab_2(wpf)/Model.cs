@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Text;
 using Queues;
 using Structures;
 
 namespace Lab_2_2
 {
-    class Model //: INotifyPropertyChanged
+    class Model : INotifyPropertyChanged
     {
         private SystemClock clock;
         //времено public для теста
@@ -258,6 +260,15 @@ namespace Lab_2_2
             if (resource.ActiveProcess != null)
             {
                 resource.ActiveProcess.FreeingAResource -= FreeingAResourceEventHandler;
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null) 
+        {
+            if (PropertyChanged != null) 
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
     }
