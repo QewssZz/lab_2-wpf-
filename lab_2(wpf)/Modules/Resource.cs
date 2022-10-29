@@ -1,17 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Diagnostics.Contracts;
+using System.ComponentModel;
 
 namespace Lab_2_2
 {
-    class Resource
+    class Resource : INotifyPropertyChanged
     {
+        private Process activeProcess;
         public Process ActiveProcess
         {
             get { return activeProcess; }
-            set { activeProcess = value; }
+            set { activeProcess = value; OnPropertyChanged(); }
         }
-        private Process activeProcess;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged()
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs("ActiveProcess"));
+            }
+        }
 
         public void WorkingCycle()
         {
@@ -21,6 +32,7 @@ namespace Lab_2_2
             }
         }
 
+        [Pure]
         public bool IsFree()
         {
             return activeProcess == null;

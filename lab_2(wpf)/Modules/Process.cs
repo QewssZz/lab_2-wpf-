@@ -40,15 +40,19 @@ namespace Lab_2_2
                 workTime++;
                 return;
             }
-            /*if (Status == ProcessStatus.running)
+            else 
             {
-                Status = rand.Next(0, 2) == 0 ? ProcessStatus.terminated : ProcessStatus.waiting;
+                if (Status == ProcessStatus.running)
+                {
+                    Status = rand.Next(0, 2) == 0 ? ProcessStatus.terminated : ProcessStatus.waiting;
+                }
+                else
+                {
+                    Status = ProcessStatus.ready;
+                }
+                OnFreeResource(this, null);
             }
-            else
-            {
-                Status = ProcessStatus.ready;
-            }*/
-            OnFreeResource(this, null);
+
         }
         public void ResetWorkTime()
         {
@@ -56,8 +60,11 @@ namespace Lab_2_2
         }
         public override string ToString()
         {
-            return "Id: " + id + "; Burst time: " + BurstTime + "; Status: " 
-                + Status + "Work time: " + workTime;
+            return "Process ID: " + id +
+                   "; Process Name: " + name +
+                   "; Process Status: " + Status +
+                   "; Process Address Space: " + AddrSpace +
+                   "; Process Burst Time: " + BurstTime + ";";
             // добавить workTime
         }
 

@@ -18,7 +18,7 @@ namespace Lab_2_2
             //Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new lab_2_wpf_.Form1());
+            Application.Run(new Lab_2_2.Form1());
             Model model = new Model();
             /*model.ModelSet.Intensity = 0.8;
             model.ModelSet.MinValueOfBurstTime = 3;

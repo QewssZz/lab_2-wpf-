@@ -1,6 +1,10 @@
 ﻿
-namespace lab_2_wpf_
+using System;
+using System.Windows.Forms;
+
+namespace Lab_2_2
 {
+   
     partial class Form1
     {
         /// <summary>
@@ -406,6 +410,7 @@ namespace lab_2_wpf_
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(464, 47);
             this.flowLayoutPanel1.TabIndex = 13;
+            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
             // label14
             // 
@@ -543,7 +548,6 @@ namespace lab_2_wpf_
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -578,6 +582,56 @@ namespace lab_2_wpf_
 
         }
 
+        private void label7_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
+
+        private void numericUpDown5_ValueChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
+
+        private void numericUpDown4_ValueChanged(object sender, EventArgs e)
+        {
+           // throw new NotImplementedException();
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
+
+        private void label9_Click_1(object sender, EventArgs e)
+        {
+           // throw new NotImplementedException();
+        }
+
+        private void panel10_Paint(object sender, PaintEventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
+
         #endregion
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
@@ -603,7 +657,7 @@ namespace lab_2_wpf_
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.ListBox listBox1;
+        public System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Label label9;
@@ -627,5 +681,6 @@ namespace lab_2_wpf_
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
     }
+
 }
 
