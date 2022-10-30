@@ -522,7 +522,7 @@ namespace Lab_2_2
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(24, 546);
+            this.label16.Location = new System.Drawing.Point(36, 546);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(16, 17);
             this.label16.TabIndex = 19;
@@ -658,8 +658,6 @@ namespace Lab_2_2
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
@@ -675,8 +673,6 @@ namespace Lab_2_2
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label18;
         public NumericUpDown numericUpDown1;
         public NumericUpDown numericUpDown2;
         public NumericUpDown numericUpDown3;
@@ -684,6 +680,10 @@ namespace Lab_2_2
         public NumericUpDown numericUpDown4;
         public ComboBox comboBox1;
         public ListBox listBox2;
+        public Label label12;
+        public Label label10;
+        public Label label17;
+        public Label label18;
     }
 
 }

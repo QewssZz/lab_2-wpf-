@@ -25,6 +25,18 @@ namespace Lab_2_2
             Binding binding = new Binding("Text", model.cpu, "ActiveProcess");
             frm.listBox1.DataBindings.Add(binding);
 
+            //привязка активного процесса(процесор)
+            frm.label17.DataBindings.Add(new Binding("Text", model.cpu, "ActiveProcess"));
+
+            //привязка активного процесса(внешнее устройство)
+            frm.label18.DataBindings.Add(new Binding("Text", model.device, "ActiveProcess"));
+
+            //свободная память
+            frm.label10.DataBindings.Add(new Binding("Text", model.ram, "FreeSize"));
+
+            //занятая память процессами
+            frm.label12.DataBindings.Add(new Binding("Text", model.ram, "OccupiedSize")) ;
+
             Binding intensityBinding = new Binding("Value", model.modelSettings, "Intensity");
             intensityBinding.ControlUpdateMode = ControlUpdateMode.Never;
             frm.numericUpDown1.DataBindings.Add(intensityBinding);

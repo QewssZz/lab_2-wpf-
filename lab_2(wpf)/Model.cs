@@ -14,7 +14,7 @@ namespace Lab_2_2
         //времено public для теста
         /*private*/ public Resource cpu;
         /*private*/ public Resource device;
-        private Memory ram;
+        public Memory ram;
         private IdGenerator idGen;
         //времено public для теста 
         /*private*/
