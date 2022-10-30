@@ -106,6 +106,7 @@ namespace Lab_2_2
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(141, 22);
             this.numericUpDown1.TabIndex = 1;
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // notifyIcon1
             // 
@@ -164,6 +165,7 @@ namespace Lab_2_2
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(140, 22);
             this.numericUpDown2.TabIndex = 4;
+            this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
             // 
             // panel3
             // 
@@ -189,6 +191,7 @@ namespace Lab_2_2
             this.numericUpDown3.Name = "numericUpDown3";
             this.numericUpDown3.Size = new System.Drawing.Size(143, 22);
             this.numericUpDown3.TabIndex = 0;
+            this.numericUpDown3.ValueChanged += new System.EventHandler(this.numericUpDown3_ValueChanged);
             // 
             // comboBox1
             // 
@@ -197,6 +200,7 @@ namespace Lab_2_2
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(143, 24);
             this.comboBox1.TabIndex = 5;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // panel4
             // 
@@ -633,29 +637,22 @@ namespace Lab_2_2
         }
 
         #endregion
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Diagnostics.Process process1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.NumericUpDown numericUpDown5;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.Panel panel7;
         public System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label label8;
@@ -680,6 +677,13 @@ namespace Lab_2_2
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
+        public NumericUpDown numericUpDown1;
+        public NumericUpDown numericUpDown2;
+        public NumericUpDown numericUpDown3;
+        public NumericUpDown numericUpDown5;
+        public NumericUpDown numericUpDown4;
+        public ComboBox comboBox1;
+        public ListBox listBox2;
     }
 
 }

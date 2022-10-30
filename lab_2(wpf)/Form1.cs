@@ -16,10 +16,10 @@ namespace Lab_2_2
         public Form1()
         {
             InitializeComponent();
-            // Model model = new Model();
+            Model model = new Model();
             viewDetailed = new ViewDetailed(new Model(), new Controller(), this);
             viewDetailed.DataBind();
-            // model._cpu.ActiveProcess = new Process(1, 100);
+            model.cpu.ActiveProcess = new Process(1, 100);
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -28,6 +28,26 @@ namespace Lab_2_2
         }
 
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numericUpDown2_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numericUpDown3_ValueChanged(object sender, EventArgs e)
         {
 
         }

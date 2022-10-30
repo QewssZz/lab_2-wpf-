@@ -34,7 +34,7 @@ namespace Lab_2_2
         private MemoryManager memoryManager;
         private DeviceScheduler deviceScheduler;
         private Random processRand;
-        private Settings modelSettings;
+        public Settings modelSettings;
         private Random rand = new Random();
 
         public Model()
