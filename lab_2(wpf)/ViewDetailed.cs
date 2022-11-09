@@ -20,10 +20,22 @@ namespace Lab_2_2
             this.frm = frm;
         }
 
+        private void PropertyChangedHandler(object sender, PropertyChangedEventArgs e) 
+        {
+            if (e.PropertyName == "ReadyQueue")
+            {
+                updateListBox(model.ReadyQueue, frm.listBox1);
+            }
+            else
+            {
+                updateListBox(model.DeviceQueue, frm.listBox2);
+            }
+        }
+
         public override void DataBind()
         {
-            Binding binding = new Binding("Text", model.cpu, "ActiveProcess");
-            frm.listBox1.DataBindings.Add(binding);
+            //привязка счетчика тактов
+            frm.lblTime.DataBindings.Add(new Binding("Text", model.clock, "Clock"));
 
             //привязка активного процесса(процесор)
             frm.label17.DataBindings.Add(new Binding("Text", model.cpu, "ActiveProcess"));
@@ -32,49 +44,57 @@ namespace Lab_2_2
             frm.label18.DataBindings.Add(new Binding("Text", model.device, "ActiveProcess"));
 
             //свободная память
-            frm.label10.DataBindings.Add(new Binding("Text", model.ram, "FreeSize"));
+            frm.FreeSize.DataBindings.Add(new Binding("Text", model.ram, "FreeSize"));
 
             //занятая память процессами
-            frm.label12.DataBindings.Add(new Binding("Text", model.ram, "OccupiedSize")) ;
+            frm.OccupiedSize.DataBindings.Add(new Binding("Text", model.ram, "OccupiedSize")) ;
+
 
             Binding intensityBinding = new Binding("Value", model.modelSettings, "Intensity");
             intensityBinding.ControlUpdateMode = ControlUpdateMode.Never;
-            frm.numericUpDown1.DataBindings.Add(intensityBinding);
+            frm.nudIntensity.DataBindings.Add(intensityBinding);
 
             Binding burstMinBinding = new Binding("Value", model.modelSettings, "MinValueOfBurstTime");
             intensityBinding.ControlUpdateMode = ControlUpdateMode.Never;
-            frm.numericUpDown2.DataBindings.Add(burstMinBinding);
+            frm.nudBurstMin.DataBindings.Add(burstMinBinding);
 
             Binding burstMaxBinding = new Binding("Value", model.modelSettings, "MaxValueOfBurstTime");
             intensityBinding.ControlUpdateMode = ControlUpdateMode.Never;
-            frm.numericUpDown3.DataBindings.Add(burstMaxBinding);
+            frm.nudBurstMax.DataBindings.Add(burstMaxBinding);
 
             Binding addrSpaceMinBinding = new Binding("Value", model.modelSettings, "MinValueOfAddrSpace");
             addrSpaceMinBinding.ControlUpdateMode = ControlUpdateMode.Never;
-            frm.numericUpDown4.DataBindings.Add(addrSpaceMinBinding);
+            frm.nudAddrSpaceMin.DataBindings.Add(addrSpaceMinBinding);
 
             Binding addrSpaceMaxBinding = new Binding("Value", model.modelSettings, "MaxValueOfAddrSpace");
             addrSpaceMaxBinding.ControlUpdateMode = ControlUpdateMode.Never;
-            frm.numericUpDown5.DataBindings.Add(addrSpaceMaxBinding);
+            frm.nudAddrSpaceMax.DataBindings.Add(addrSpaceMaxBinding);
 
             Binding ramSizeBinding = new Binding("SelectedItem", model.modelSettings, "ValueOfRAMSize", true);
             ramSizeBinding.ControlUpdateMode = ControlUpdateMode.Never;
-            frm.comboBox1.DataBindings.Add(ramSizeBinding);
-
-
-            //frm.listBox1.DataBindings.Add(new Binding("DataSource", model, "ReadyQueue"));
-            //frm.listBox2.DataBindings.Add(new Binding("DataSource", model, "DeviceQueue"));
-
+            frm.cbRamSize.DataBindings.Add(ramSizeBinding);
+            
+            Subscribe();
         }
         public override void DataUnbind() { }
 
         // подписчик
-        private void Subscribe() { }
-        private void Unsubscribe() { }
-        private void PropertyChangedHandler(object sender, PropertyChangedEventArgs e)
-        { }
-
+        private void Subscribe() 
+        {
+            model.PropertyChanged += new PropertyChangedEventHandler(PropertyChangedHandler);
+        }
+        private void Unsubscribe() 
+        {
+            model.PropertyChanged -= PropertyChangedHandler;
+        }
         private void updateListBox(IQueueable<Process> queue, ListBox lb)
-        { }
+        {
+            lb.Items.Clear();
+            if (queue.Count != 0)
+            {
+                lb.Items.AddRange(queue.ToArray());
+            }
+        }
+
     }
 }

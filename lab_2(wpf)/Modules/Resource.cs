@@ -40,7 +40,7 @@ namespace Lab_2_2
 
         public void Clear()
         {
-            activeProcess = null;
+            ActiveProcess = null;
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Lab_2_2
         public readonly Model model;
         public Controller controller
         {
-            get;
+            private get;
             set;
         }
         public void ReactToUserActions(ModelOperations modelOperation)

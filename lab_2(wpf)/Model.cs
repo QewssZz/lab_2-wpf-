@@ -10,7 +10,7 @@ namespace Lab_2_2
 {
     class Model : INotifyPropertyChanged
     {
-        private SystemClock clock;
+        /*private*/ public SystemClock clock;
         //времено public для теста
         /*private*/ public Resource cpu;
         /*private*/ public Resource device;
@@ -22,13 +22,13 @@ namespace Lab_2_2
         public IQueueable<Process> ReadyQueue 
         {
             get { return readyQueue; }
-            set { readyQueue = value; }
+            set { readyQueue = value; OnPropertyChanged(); }
         }
         /*private*/ public IQueueable<Process> deviceQueue;
         public IQueueable<Process> DeviceQueue
         {
             get { return deviceQueue; }
-            set { deviceQueue = value; }
+            set { deviceQueue = value; OnPropertyChanged(); }
         }
         private CPUScheduler cpuScheduler;
         private MemoryManager memoryManager;
@@ -79,11 +79,11 @@ namespace Lab_2_2
                 {
                     proc.BurstTime = processRand.Next(modelSettings.MinValueOfBurstTime,
                         modelSettings.MaxValueOfBurstTime + 1);
-                    //Subscribe(proc);
-                    readyQueue.Put(proc);
+                    Subscribe(proc);
+                    ReadyQueue = readyQueue.Put(proc);
                     if (cpu.IsFree())
                     {
-                        cpuScheduler.Session();
+                        ReadyQueue = cpuScheduler.Session();
                     }
                 }
             }
@@ -96,8 +96,8 @@ namespace Lab_2_2
             cpu.Clear();
             device.Clear();
             ram.Clear();
-            readyQueue.Clear();
-            deviceQueue.Clear();
+            ReadyQueue = readyQueue.Clear();
+            DeviceQueue = deviceQueue.Clear();
         }
 
         private void FreeingAResourceEventHandler(object sender, EventArgs e)
@@ -107,7 +107,7 @@ namespace Lab_2_2
             switch (resourceFreeingProcess.Status)//p.Status) 
             {
                 case ProcessStatus.terminated:
-                    Unsubscribe(cpu);
+                    Unsubscribe(resourceFreeingProcess);
                     cpu.Clear();
                     memoryManager.Free(resourceFreeingProcess);
                     if (readyQueue.Count != 0) 
@@ -116,7 +116,7 @@ namespace Lab_2_2
                     }
                     break;
                 case ProcessStatus.waiting:
-                    Unsubscribe(cpu);
+                    //Unsubscribe(resourceFreeingProcess);
                     cpu.Clear();
                     if (readyQueue.Count != 0)
                     {
@@ -131,7 +131,7 @@ namespace Lab_2_2
                     }
                     break;
                 case ProcessStatus.ready:
-                    Unsubscribe(device);
+                    //Unsubscribe(resourceFreeingProcess);
                     device.Clear();
                     if (deviceQueue.Count != 0) 
                     {
@@ -147,95 +147,7 @@ namespace Lab_2_2
                     break;
                 default:
                     throw new Exception("Unknown process status.");
-
-                    /*case ProcessStatus.ready:
-                        Unsubscribe(device);
-                        device.Clear();
-                        p.BurstTime = processRand.Next(modelSettings.MinValueOfBurstTime
-                            , modelSettings.MaxValueOfAddrSpace + 1);
-                        p.ResetWorkTime();
-                        readyQueue = readyQueue.Put(p);
-                        if (cpu.IsFree()) 
-                        {
-                            cpuScheduler.Session();
-                        }
-                        if (deviceQueue.Count != 0) 
-                        {
-                            deviceQueue = deviceScheduler.Session();
-                        }
-                        break;
-                    case ProcessStatus.terminated:
-                        cpu.Clear();
-                        memoryManager.Free(p);
-                        Unsubscribe(cpu);
-                        break;
-                    case ProcessStatus.waiting:
-                        cpu.Clear();
-                        p.BurstTime = processRand.Next(modelSettings.MinValueOfBurstTime,
-                            modelSettings.MaxValueOfBurstTime + 1);
-                        p.ResetWorkTime();
-                        deviceQueue = deviceQueue.Put(p);
-                        if (device.IsFree()) 
-                        {
-                            deviceScheduler.Session();
-                        }
-                        if (readyQueue.Count != 0) 
-                        {
-                            cpuScheduler.Session();
-                        }
-                        break;
-                    default:
-                        break;*/
             }
-            
-
-
-            //#1
-            /*if  (p.Status == ProcessStatus.waiting)//процес покидает внешнее устройство
-            {
-                p.Status = ProcessStatus.ready;
-                device.Clear();
-                p.BurstTime = processRand.Next(modelSettings.MinValueOfBurstTime,
-                       modelSettings.MaxValueOfBurstTime + 1);
-                p.ResetWorkTime();
-                readyQueue = readyQueue.Put(p);
-                if (cpu.IsFree())
-                {
-                    cpuScheduler.Session();
-                }
-                if (deviceQueue.Count != 0)
-                {
-                    deviceQueue = deviceScheduler.Session();
-                }
-            }
-
-            else //процесс покидает процессор
-            {
-                cpu.Clear();
-                p.Status = rand.Next(0, 2) == 0 ? ProcessStatus.terminated :
-                    ProcessStatus.waiting;
-                if (p.Status == ProcessStatus.waiting)
-                {
-                    p.BurstTime = processRand.Next(modelSettings.MinValueOfBurstTime,
-                       modelSettings.MaxValueOfBurstTime + 1);
-                    p.ResetWorkTime();
-                    deviceQueue = deviceQueue.Put(p);
-                    if (device.IsFree())
-                    {
-                        deviceScheduler.Session();
-                    }
-                    if (readyQueue.Count != 0)
-                    {
-                        cpuScheduler.Session();
-                    }
-                }
-                else
-                {
-                    memoryManager.Free(p);
-                    Unsubscribe(p);
-                }
-                //readyQueue = cpuScheduler.Session();
-            }*/
         }
         private void putProcessOnResource(Resource resource)
         {
@@ -248,18 +160,18 @@ namespace Lab_2_2
                 DeviceQueue = deviceScheduler.Session();
             }
         }
-        private void Subscribe(Resource resource /*Process p*/)
+        private void Subscribe(Process p)
         {
-            if (resource.ActiveProcess != null)
+            if (p != null)
             {
-                resource.ActiveProcess.FreeingAResource += FreeingAResourceEventHandler;
+                p.FreeingAResource += FreeingAResourceEventHandler;
             }
         }
-        private void Unsubscribe(Resource resource /*Process p*/)
+        private void Unsubscribe(Process p)
         {
-            if (resource.ActiveProcess != null)
+            if (p != null)
             {
-                resource.ActiveProcess.FreeingAResource -= FreeingAResourceEventHandler;
+                p.FreeingAResource -= FreeingAResourceEventHandler;
             }
         }
 
@@ -271,5 +183,7 @@ namespace Lab_2_2
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+        
+
     }
 }

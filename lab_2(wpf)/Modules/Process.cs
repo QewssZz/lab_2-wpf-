@@ -11,7 +11,7 @@ namespace Lab_2_2
         private long id;
         private string name;
         private long workTime;
-        private Random rand;
+        private Random rand = new Random();
 
         public event EventHandler FreeingAResource;
 
@@ -38,7 +38,7 @@ namespace Lab_2_2
             if (workTime < BurstTime)
             {
                 workTime++;
-                return;
+                //return;
             }
             else 
             {
@@ -62,9 +62,10 @@ namespace Lab_2_2
         {
             return "Process ID: " + id +
                    "; Process Name: " + name +
-                   "; Process Status: " + Status +
-                   "; Process Address Space: " + AddrSpace +
-                   "; Process Burst Time: " + BurstTime + ";";
+                   "; Process Burst Time: " + BurstTime +
+                "; Process Status: " + Status +
+               "; Process Address Space: " + AddrSpace + ";";
+                   
             // добавить workTime
         }
 

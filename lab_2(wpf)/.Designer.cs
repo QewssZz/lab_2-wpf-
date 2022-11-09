@@ -34,26 +34,26 @@ namespace Lab_2_2
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.nudIntensity = new System.Windows.Forms.NumericUpDown();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.process1 = new System.Diagnostics.Process();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.nudBurstMin = new System.Windows.Forms.NumericUpDown();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.nudBurstMax = new System.Windows.Forms.NumericUpDown();
+            this.cbRamSize = new System.Windows.Forms.ComboBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.nudAddrSpaceMin = new System.Windows.Forms.NumericUpDown();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
-            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
+            this.nudAddrSpaceMax = new System.Windows.Forms.NumericUpDown();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
@@ -61,9 +61,9 @@ namespace Lab_2_2
             this.label8 = new System.Windows.Forms.Label();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.label12 = new System.Windows.Forms.Label();
+            this.OccupiedSize = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.FreeSize = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
             this.label17 = new System.Windows.Forms.Label();
@@ -72,26 +72,27 @@ namespace Lab_2_2
             this.label14 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.rbManual = new System.Windows.Forms.RadioButton();
             this.label15 = new System.Windows.Forms.Label();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.rbAuto = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.label16 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnWork = new System.Windows.Forms.Button();
+            this.btnEnd = new System.Windows.Forms.Button();
+            this.btnStats = new System.Windows.Forms.Button();
+            this.lblTime = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.nudIntensity)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudBurstMin)).BeginInit();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudBurstMax)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAddrSpaceMin)).BeginInit();
             this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAddrSpaceMax)).BeginInit();
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -100,13 +101,24 @@ namespace Lab_2_2
             this.panel11.SuspendLayout();
             this.SuspendLayout();
             // 
-            // numericUpDown1
+            // nudIntensity
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(5, 70);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(141, 22);
-            this.numericUpDown1.TabIndex = 1;
-            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            this.nudIntensity.DecimalPlaces = 1;
+            this.nudIntensity.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.nudIntensity.Location = new System.Drawing.Point(5, 70);
+            this.nudIntensity.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudIntensity.Name = "nudIntensity";
+            this.nudIntensity.Size = new System.Drawing.Size(141, 22);
+            this.nudIntensity.TabIndex = 1;
+            this.nudIntensity.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // notifyIcon1
             // 
@@ -126,8 +138,8 @@ namespace Lab_2_2
             // panel1
             // 
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.numericUpDown1);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Controls.Add(this.nudIntensity);
+            this.panel1.Location = new System.Drawing.Point(12, 15);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(149, 95);
             this.panel1.TabIndex = 2;
@@ -144,8 +156,8 @@ namespace Lab_2_2
             // panel2
             // 
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.numericUpDown2);
-            this.panel2.Location = new System.Drawing.Point(167, 12);
+            this.panel2.Controls.Add(this.nudBurstMin);
+            this.panel2.Location = new System.Drawing.Point(242, 15);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(149, 95);
             this.panel2.TabIndex = 3;
@@ -159,19 +171,19 @@ namespace Lab_2_2
             this.label2.TabIndex = 5;
             this.label2.Text = "Минимальное \r\nзначение\r\nпромежутка\r\nработы на ЦП\r\n";
             // 
-            // numericUpDown2
+            // nudBurstMin
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(6, 70);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(140, 22);
-            this.numericUpDown2.TabIndex = 4;
-            this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
+            this.nudBurstMin.Location = new System.Drawing.Point(6, 70);
+            this.nudBurstMin.Name = "nudBurstMin";
+            this.nudBurstMin.Size = new System.Drawing.Size(140, 22);
+            this.nudBurstMin.TabIndex = 4;
+            this.nudBurstMin.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.numericUpDown3);
-            this.panel3.Location = new System.Drawing.Point(322, 12);
+            this.panel3.Controls.Add(this.nudBurstMax);
+            this.panel3.Location = new System.Drawing.Point(470, 15);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(149, 95);
             this.panel3.TabIndex = 4;
@@ -185,28 +197,35 @@ namespace Lab_2_2
             this.label3.TabIndex = 1;
             this.label3.Text = "Максимальное \r\nзначение\r\nпромежутка\r\nработы на ЦП";
             // 
-            // numericUpDown3
+            // nudBurstMax
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(3, 70);
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(143, 22);
-            this.numericUpDown3.TabIndex = 0;
-            this.numericUpDown3.ValueChanged += new System.EventHandler(this.numericUpDown3_ValueChanged);
+            this.nudBurstMax.Location = new System.Drawing.Point(3, 70);
+            this.nudBurstMax.Name = "nudBurstMax";
+            this.nudBurstMax.Size = new System.Drawing.Size(143, 22);
+            this.nudBurstMax.TabIndex = 0;
+            this.nudBurstMax.ValueChanged += new System.EventHandler(this.numericUpDown3_ValueChanged);
             // 
-            // comboBox1
+            // cbRamSize
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(3, 68);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(143, 24);
-            this.comboBox1.TabIndex = 5;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.cbRamSize.FormattingEnabled = true;
+            this.cbRamSize.Items.AddRange(new object[] {
+            "1000",
+            "2000",
+            "4000",
+            "8000",
+            "16000",
+            "32000"});
+            this.cbRamSize.Location = new System.Drawing.Point(3, 68);
+            this.cbRamSize.Name = "cbRamSize";
+            this.cbRamSize.Size = new System.Drawing.Size(143, 24);
+            this.cbRamSize.TabIndex = 5;
+            this.cbRamSize.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // panel4
             // 
             this.panel4.Controls.Add(this.label4);
-            this.panel4.Controls.Add(this.comboBox1);
-            this.panel4.Location = new System.Drawing.Point(477, 12);
+            this.panel4.Controls.Add(this.cbRamSize);
+            this.panel4.Location = new System.Drawing.Point(710, 15);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(149, 95);
             this.panel4.TabIndex = 6;
@@ -223,8 +242,8 @@ namespace Lab_2_2
             // panel5
             // 
             this.panel5.Controls.Add(this.label5);
-            this.panel5.Controls.Add(this.numericUpDown4);
-            this.panel5.Location = new System.Drawing.Point(632, 12);
+            this.panel5.Controls.Add(this.nudAddrSpaceMin);
+            this.panel5.Location = new System.Drawing.Point(995, 15);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(149, 95);
             this.panel5.TabIndex = 7;
@@ -239,19 +258,19 @@ namespace Lab_2_2
             this.label5.Text = "Минимальный \r\nразмер адресного\r\nпространства\r\nпроцесса";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
-            // numericUpDown4
+            // nudAddrSpaceMin
             // 
-            this.numericUpDown4.Location = new System.Drawing.Point(3, 69);
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(143, 22);
-            this.numericUpDown4.TabIndex = 0;
-            this.numericUpDown4.ValueChanged += new System.EventHandler(this.numericUpDown4_ValueChanged);
+            this.nudAddrSpaceMin.Location = new System.Drawing.Point(3, 69);
+            this.nudAddrSpaceMin.Name = "nudAddrSpaceMin";
+            this.nudAddrSpaceMin.Size = new System.Drawing.Size(143, 22);
+            this.nudAddrSpaceMin.TabIndex = 0;
+            this.nudAddrSpaceMin.ValueChanged += new System.EventHandler(this.numericUpDown4_ValueChanged);
             // 
             // panel6
             // 
             this.panel6.Controls.Add(this.label6);
-            this.panel6.Controls.Add(this.numericUpDown5);
-            this.panel6.Location = new System.Drawing.Point(792, 12);
+            this.panel6.Controls.Add(this.nudAddrSpaceMax);
+            this.panel6.Location = new System.Drawing.Point(1252, 15);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(149, 95);
             this.panel6.TabIndex = 8;
@@ -265,13 +284,13 @@ namespace Lab_2_2
             this.label6.TabIndex = 1;
             this.label6.Text = "Максимальный \r\nразмер адресного\r\nпространства\r\nпроцесса";
             // 
-            // numericUpDown5
+            // nudAddrSpaceMax
             // 
-            this.numericUpDown5.Location = new System.Drawing.Point(3, 68);
-            this.numericUpDown5.Name = "numericUpDown5";
-            this.numericUpDown5.Size = new System.Drawing.Size(143, 22);
-            this.numericUpDown5.TabIndex = 0;
-            this.numericUpDown5.ValueChanged += new System.EventHandler(this.numericUpDown5_ValueChanged);
+            this.nudAddrSpaceMax.Location = new System.Drawing.Point(3, 68);
+            this.nudAddrSpaceMax.Name = "nudAddrSpaceMax";
+            this.nudAddrSpaceMax.Size = new System.Drawing.Size(143, 22);
+            this.nudAddrSpaceMax.TabIndex = 0;
+            this.nudAddrSpaceMax.ValueChanged += new System.EventHandler(this.numericUpDown5_ValueChanged);
             // 
             // panel7
             // 
@@ -279,7 +298,7 @@ namespace Lab_2_2
             this.panel7.Controls.Add(this.listBox1);
             this.panel7.Location = new System.Drawing.Point(12, 173);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(459, 270);
+            this.panel7.Size = new System.Drawing.Size(692, 270);
             this.panel7.TabIndex = 9;
             // 
             // label7
@@ -298,7 +317,7 @@ namespace Lab_2_2
             this.listBox1.ItemHeight = 16;
             this.listBox1.Location = new System.Drawing.Point(3, 23);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(453, 244);
+            this.listBox1.Size = new System.Drawing.Size(686, 244);
             this.listBox1.TabIndex = 0;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -306,9 +325,9 @@ namespace Lab_2_2
             // 
             this.panel8.Controls.Add(this.label8);
             this.panel8.Controls.Add(this.listBox2);
-            this.panel8.Location = new System.Drawing.Point(480, 173);
+            this.panel8.Location = new System.Drawing.Point(710, 173);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(461, 270);
+            this.panel8.Size = new System.Drawing.Size(703, 270);
             this.panel8.TabIndex = 10;
             // 
             // label8
@@ -324,30 +343,30 @@ namespace Lab_2_2
             // 
             this.listBox2.FormattingEnabled = true;
             this.listBox2.ItemHeight = 16;
-            this.listBox2.Location = new System.Drawing.Point(3, 23);
+            this.listBox2.Location = new System.Drawing.Point(3, 20);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(455, 244);
+            this.listBox2.Size = new System.Drawing.Size(706, 244);
             this.listBox2.TabIndex = 0;
             // 
             // panel9
             // 
-            this.panel9.Controls.Add(this.label12);
+            this.panel9.Controls.Add(this.OccupiedSize);
             this.panel9.Controls.Add(this.label11);
-            this.panel9.Controls.Add(this.label10);
+            this.panel9.Controls.Add(this.FreeSize);
             this.panel9.Controls.Add(this.label9);
-            this.panel9.Location = new System.Drawing.Point(12, 449);
+            this.panel9.Location = new System.Drawing.Point(215, 452);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(929, 57);
             this.panel9.TabIndex = 11;
             // 
-            // label12
+            // OccupiedSize
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(753, 26);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(16, 17);
-            this.label12.TabIndex = 3;
-            this.label12.Text = "0";
+            this.OccupiedSize.AutoSize = true;
+            this.OccupiedSize.Location = new System.Drawing.Point(753, 26);
+            this.OccupiedSize.Name = "OccupiedSize";
+            this.OccupiedSize.Size = new System.Drawing.Size(16, 17);
+            this.OccupiedSize.TabIndex = 3;
+            this.OccupiedSize.Text = "0";
             // 
             // label11
             // 
@@ -358,14 +377,14 @@ namespace Lab_2_2
             this.label11.TabIndex = 2;
             this.label11.Text = "Размер памяти, занятой процессами: ";
             // 
-            // label10
+            // FreeSize
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(228, 26);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(16, 17);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "0";
+            this.FreeSize.AutoSize = true;
+            this.FreeSize.Location = new System.Drawing.Point(228, 26);
+            this.FreeSize.Name = "FreeSize";
+            this.FreeSize.Size = new System.Drawing.Size(16, 17);
+            this.FreeSize.TabIndex = 1;
+            this.FreeSize.Text = "0";
             // 
             // label9
             // 
@@ -383,7 +402,7 @@ namespace Lab_2_2
             this.panel10.Controls.Add(this.label13);
             this.panel10.Location = new System.Drawing.Point(12, 113);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(459, 47);
+            this.panel10.Size = new System.Drawing.Size(692, 47);
             this.panel10.TabIndex = 12;
             this.panel10.Paint += new System.Windows.Forms.PaintEventHandler(this.panel10_Paint);
             // 
@@ -410,9 +429,9 @@ namespace Lab_2_2
             this.flowLayoutPanel1.Controls.Add(this.label14);
             this.flowLayoutPanel1.Controls.Add(this.label18);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(477, 113);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(710, 113);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(464, 47);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(697, 47);
             this.flowLayoutPanel1.TabIndex = 13;
             this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
@@ -435,26 +454,27 @@ namespace Lab_2_2
             // 
             // panel11
             // 
-            this.panel11.Controls.Add(this.radioButton3);
+            this.panel11.Controls.Add(this.rbManual);
             this.panel11.Controls.Add(this.label15);
-            this.panel11.Controls.Add(this.radioButton2);
+            this.panel11.Controls.Add(this.rbAuto);
             this.panel11.Controls.Add(this.radioButton1);
-            this.panel11.Location = new System.Drawing.Point(106, 523);
+            this.panel11.Location = new System.Drawing.Point(309, 526);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(353, 67);
             this.panel11.TabIndex = 14;
             // 
-            // radioButton3
+            // rbManual
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(10, 23);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(77, 21);
-            this.radioButton3.TabIndex = 3;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Ручной";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
+            this.rbManual.AutoSize = true;
+            this.rbManual.Checked = true;
+            this.rbManual.Location = new System.Drawing.Point(10, 23);
+            this.rbManual.Name = "rbManual";
+            this.rbManual.Size = new System.Drawing.Size(77, 21);
+            this.rbManual.TabIndex = 3;
+            this.rbManual.TabStop = true;
+            this.rbManual.Text = "Ручной";
+            this.rbManual.UseVisualStyleBackColor = true;
+            this.rbManual.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
             // 
             // label15
             // 
@@ -464,16 +484,16 @@ namespace Lab_2_2
             this.label15.TabIndex = 0;
             this.label15.Text = "Режим роботы";
             // 
-            // radioButton2
+            // rbAuto
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(126, 23);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(138, 21);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Автоматический";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rbAuto.AutoSize = true;
+            this.rbAuto.Location = new System.Drawing.Point(126, 23);
+            this.rbAuto.Name = "rbAuto";
+            this.rbAuto.Size = new System.Drawing.Size(138, 21);
+            this.rbAuto.TabIndex = 1;
+            this.rbAuto.Text = "Автоматический";
+            this.rbAuto.UseVisualStyleBackColor = true;
+            this.rbAuto.Click += new System.EventHandler(this.rbAutomatic_CheckedChanged);
             // 
             // radioButton1
             // 
@@ -482,62 +502,69 @@ namespace Lab_2_2
             this.radioButton1.Size = new System.Drawing.Size(104, 24);
             this.radioButton1.TabIndex = 2;
             // 
-            // button1
+            // btnSave
             // 
-            this.button1.Location = new System.Drawing.Point(495, 523);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(110, 67);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "Сохранение \r\nнастроек";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnSave.Location = new System.Drawing.Point(698, 526);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(110, 67);
+            this.btnSave.TabIndex = 15;
+            this.btnSave.Text = "Сохранение \r\nнастроек";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnStart_Click);
             // 
-            // button2
+            // btnWork
             // 
-            this.button2.Location = new System.Drawing.Point(611, 523);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(106, 67);
-            this.button2.TabIndex = 16;
-            this.button2.Text = "Рабочий такт";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnWork.Location = new System.Drawing.Point(814, 526);
+            this.btnWork.Name = "btnWork";
+            this.btnWork.Size = new System.Drawing.Size(106, 67);
+            this.btnWork.TabIndex = 16;
+            this.btnWork.Text = "Рабочий такт";
+            this.btnWork.UseVisualStyleBackColor = true;
+            this.btnWork.Click += new System.EventHandler(this.btnWork_Click);
             // 
-            // button3
+            // btnEnd
             // 
-            this.button3.Location = new System.Drawing.Point(723, 523);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(104, 67);
-            this.button3.TabIndex = 17;
-            this.button3.Text = "Завершение \r\nсеанса";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnEnd.Location = new System.Drawing.Point(926, 526);
+            this.btnEnd.Name = "btnEnd";
+            this.btnEnd.Size = new System.Drawing.Size(104, 67);
+            this.btnEnd.TabIndex = 17;
+            this.btnEnd.Text = "Завершение \r\nсеанса";
+            this.btnEnd.UseVisualStyleBackColor = true;
+            this.btnEnd.Click += new System.EventHandler(this.btnSessionEnd_Click);
             // 
-            // button4
+            // btnStats
             // 
-            this.button4.Location = new System.Drawing.Point(833, 523);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(108, 67);
-            this.button4.TabIndex = 18;
-            this.button4.Text = "Статистика";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.btnStats.Location = new System.Drawing.Point(1036, 526);
+            this.btnStats.Name = "btnStats";
+            this.btnStats.Size = new System.Drawing.Size(108, 67);
+            this.btnStats.TabIndex = 18;
+            this.btnStats.Text = "Статистика";
+            this.btnStats.UseVisualStyleBackColor = true;
+            this.btnStats.Click += new System.EventHandler(this.button4_Click);
             // 
-            // label16
+            // lblTime
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(36, 546);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(16, 17);
-            this.label16.TabIndex = 19;
-            this.label16.Text = "0";
+            this.lblTime.AutoSize = true;
+            this.lblTime.Location = new System.Drawing.Point(239, 549);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(16, 17);
+            this.lblTime.TabIndex = 19;
+            this.lblTime.Text = "0";
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1500;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(953, 601);
-            this.Controls.Add(this.label16);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(1413, 601);
+            this.Controls.Add(this.lblTime);
+            this.Controls.Add(this.btnStats);
+            this.Controls.Add(this.btnEnd);
+            this.Controls.Add(this.btnWork);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.panel11);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel10);
@@ -552,23 +579,23 @@ namespace Lab_2_2
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudIntensity)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudBurstMin)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudBurstMax)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAddrSpaceMin)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAddrSpaceMax)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.panel8.ResumeLayout(false);
@@ -659,31 +686,32 @@ namespace Lab_2_2
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnStats;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton rbAuto;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.RadioButton radioButton3;
-        public NumericUpDown numericUpDown1;
-        public NumericUpDown numericUpDown2;
-        public NumericUpDown numericUpDown3;
-        public NumericUpDown numericUpDown5;
-        public NumericUpDown numericUpDown4;
-        public ComboBox comboBox1;
+        private System.Windows.Forms.RadioButton rbManual;
+        public NumericUpDown nudIntensity;
+        public NumericUpDown nudBurstMin;
+        public NumericUpDown nudBurstMax;
+        public NumericUpDown nudAddrSpaceMax;
+        public NumericUpDown nudAddrSpaceMin;
+        public ComboBox cbRamSize;
         public ListBox listBox2;
-        public Label label12;
-        public Label label10;
+        public Label OccupiedSize;
+        public Label FreeSize;
         public Label label17;
         public Label label18;
+        public Label lblTime;
+        public Button btnWork;
+        public Button btnEnd;
+        public Button btnSave;
+        public Timer timer1;
     }
 
 }

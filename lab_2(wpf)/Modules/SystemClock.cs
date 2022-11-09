@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Diagnostics.Contracts;
+using System.ComponentModel;
 
 namespace Lab_2_2
 {
-    class SystemClock
+    class SystemClock : INotifyPropertyChanged
     {
         private long clock;
-
+        public event PropertyChangedEventHandler PropertyChanged;
         public long Clock
         {
             get
@@ -16,17 +18,25 @@ namespace Lab_2_2
             }
             private set
             {
-                clock = value;
+                clock = value; OnPropertyChanged();
+            }
+        }
+
+        private void OnPropertyChanged()
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs("Clock"));
             }
         }
 
         public void WorkingCycle()
         {
-            clock++;
+            Clock++;
         }
         public void Clear()
         {
-            clock = 0;
+            Clock = 0;
         }
     }
 }
